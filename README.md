@@ -12,6 +12,6 @@ Site vitrine « Zéro Piège » — porte d'entrée du side business grand publi
 
 GitHub Pages : branche `main`, racine `/`. URL : https://gauthiernoepm-max.github.io/zero-piege/
 
-## À faire
+## Produit
 
-- [ ] Remplacer le lien Gumroad provisoire dans `index.html` (`#pack`) par l'URL réelle du produit
+Pack 50 lettres : https://bobcles.gumroad.com/l/50lettresresiliation
