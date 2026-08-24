@@ -14,4 +14,4 @@ GitHub Pages : branche `main`, racine `/`. URL : https://gauthiernoepm-max.githu
 
 ## Produit
 
-Pack 50 lettres : https://bobcles.gumroad.com/l/50lettresresiliation
+Pack 50 lettres : https://bobcles.lemonsqueezy.com/checkout/buy/23896106-2807-4739-a0a1-65b969cbca26
