@@ -1,13 +1,13 @@
 :root {
-  --navy: #3f5b5d;
-  --navy-soft: #567679;
-  --yellow: #eab89c;
+  --navy: #33524f;
+  --navy-soft: #4a6b6e;
+  --yellow: #e39b7d;
   --bg: #faf6f1;
   --card: #ffffff;
-  --ink: #333c42;
-  --muted: #5d6a70;
-  --line: #e2d9cd;
-  --red: #b85546;
+  --ink: #242b2f;
+  --muted: #49555c;
+  --line: #d6cabc;
+  --red: #a94b3b;
   --radius: 14px;
 }
 
@@ -47,7 +47,7 @@ nav a:hover { color: var(--yellow); }
   font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.08s ease;
 }
 .btn:active { transform: scale(0.98); }
-.btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #d9b096; }
+.btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #b97a58; }
 .btn-secondary { background: var(--navy); color: #fff; }
 
   .strip {
@@ -65,6 +65,7 @@ section.tools > .wrap > h2, section.soon > .wrap > h2 {
 .card {
   position: relative; background: var(--card); border: 1.5px solid var(--line);
   border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 8px;
+  box-shadow: 0 2px 10px rgba(51,82,79,0.06);
 }
 .card:hover { border-color: var(--navy-soft); }
 .card .icon { font-size: 30px; }
