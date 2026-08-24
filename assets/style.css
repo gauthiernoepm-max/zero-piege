@@ -1,13 +1,13 @@
 :root {
-  --navy: #4a6b6e;
-  --navy-soft: #5b7c7f;
-  --yellow: #efc9b4;
+  --navy: #3f5b5d;
+  --navy-soft: #567679;
+  --yellow: #eab89c;
   --bg: #faf6f1;
   --card: #ffffff;
-  --ink: #3a444a;
-  --muted: #6c787e;
-  --line: #e7e0d7;
-  --red: #c2604f;
+  --ink: #333c42;
+  --muted: #5d6a70;
+  --line: #e2d9cd;
+  --red: #b85546;
   --radius: 14px;
 }
 
