@@ -8,9 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
 <style>
   :root {
-    --navy: #0e2a47; --navy-soft: #1d3d5e; --yellow: #ffd449; --bg: #f7f9fb;
-    --card: #fff; --ink: #22303c; --muted: #5b6b7a; --line: #dbe4ec;
-    --green: #1e7c3a; --green-bg: #e6f6ea; --red: #c0392b;
+    --navy: #4a6b6e; --navy-soft: #5b7c7f; --yellow: #efc9b4; --bg: #faf6f1;
+    --card: #fff; --ink: #3a444a; --muted: #6c787e; --line: #e7e0d7;
+    --green: #3e7d55; --green-bg: #eaf3ec; --red: #c2604f;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -18,7 +18,7 @@
   .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
   .topbar { background: var(--navy); }
   .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
-  .topbar a { color: #cfe0f0; text-decoration: none; font-weight: 800; }
+  .topbar a { color: #e7eef0; text-decoration: none; font-weight: 800; }
   .topbar a:hover { color: var(--yellow); }
   .back { font-weight: 600 !important; font-size: 13.5px !important; }
 
@@ -36,28 +36,28 @@
   @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
   /* Upload */
-  .dropzone { border: 2px dashed #c7d4e0; border-radius: 14px; padding: 44px 20px; text-align: center;
-              cursor: pointer; transition: border-color 0.2s, background 0.2s; background: #fbfcfe; }
-  .dropzone:hover, .dropzone.drag { border-color: var(--navy); background: #f2f6fa; }
+  .dropzone { border: 2px dashed #d9cfc4; border-radius: 14px; padding: 44px 20px; text-align: center;
+              cursor: pointer; transition: border-color 0.2s, background 0.2s; background: #fdfcf9; }
+  .dropzone:hover, .dropzone.drag { border-color: var(--navy); background: #f1f0ec; }
   .dropzone .icon { font-size: 40px; margin-bottom: 10px; }
   .dropzone p { color: var(--muted); font-size: 15px; }
   .dropzone p strong { color: var(--navy); }
-  .dropzone .hint { font-size: 12.5px; color: #8aa0b5; margin-top: 8px; }
+  .dropzone .hint { font-size: 12.5px; color: #9a9186; margin-top: 8px; }
   .dropzone input { display: none; }
-  .file-info { margin-top: 16px; display: none; background: var(--green-bg); border: 1px solid #bfe6c8;
+  .file-info { margin-top: 16px; display: none; background: var(--green-bg); border: 1px solid #cfe3d2;
                border-radius: 10px; padding: 12px 16px; font-size: 14px; color: var(--green); }
   .file-info span { font-weight: 700; }
 
   /* Analyzing */
   .analyzing { text-align: center; padding: 40px 10px; }
-  .spinner { width: 58px; height: 58px; border-radius: 50%; border: 5px solid #e4ebf1; border-top-color: var(--navy);
+  .spinner { width: 58px; height: 58px; border-radius: 50%; border: 5px solid #e8e2da; border-top-color: var(--navy);
              margin: 0 auto 22px; animation: spin 0.9s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .analyzing h2 { color: var(--navy); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
   .analyzing p { color: var(--muted); font-size: 15px; min-height: 22px; }
   .steps { max-width: 360px; margin: 26px auto 0; text-align: left; }
   .steps .s { display: flex; align-items: center; gap: 12px; padding: 7px 0; color: var(--muted); font-size: 14px; }
-  .steps .s .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #c7d4e0; flex-shrink: 0; }
+  .steps .s .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #d9cfc4; flex-shrink: 0; }
   .steps .s.done { color: var(--ink); }
   .steps .s.done .dot { background: var(--green); border-color: var(--green); }
   .steps .s.done .dot::after { content: "✓"; color: #fff; font-size: 11px; font-weight: 900; display: block; text-align: center; line-height: 12px; }
@@ -74,7 +74,7 @@
                     padding: 10px 14px; max-width: 480px; margin: 0 auto 22px; }
   .btn { display: inline-block; padding: 14px 26px; border-radius: 10px; font-weight: 800; font-size: 15.5px;
          text-decoration: none; border: none; cursor: pointer; }
-  .btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #caa32b; }
+  .btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #d9b096; }
   .btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--line); margin-top: 12px; }
   .btn-ghost:hover { border-color: var(--muted); }
 
@@ -82,19 +82,19 @@
   .section { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 22px 26px; margin: 20px 0; }
   .section h2 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
   .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-  .how .h { background: #f7f9fb; border-radius: 12px; padding: 14px; }
+  .how .h { background: #f7f5f0; border-radius: 12px; padding: 14px; }
   .how .h .num { font-weight: 900; color: var(--yellow); background: var(--navy); width: 26px; height: 26px;
                  border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; margin-bottom: 8px; }
   .how .h b { color: var(--navy); font-size: 14px; display: block; margin-bottom: 4px; }
   .how .h span { font-size: 13px; color: var(--muted); }
-  .privacy { background: var(--green-bg); border-color: #bfe6c8; color: #1e5c33; }
+  .privacy { background: var(--green-bg); border-color: #cfe3d2; color: #1e5c33; }
   .privacy h2 { color: var(--green); }
   .privacy ul { margin-left: 18px; font-size: 14px; }
   .privacy li { margin: 5px 0; }
-  .notice { font-size: 13px; color: var(--muted); background: #fff8e1; border-left: 4px solid var(--yellow);
+  .notice { font-size: 13px; color: var(--muted); background: #f8f1ea; border-left: 4px solid var(--yellow);
             padding: 10px 14px; border-radius: 0 8px 8px 0; }
 
-  footer.site { background: var(--navy); color: #9fb4c9; font-size: 12.5px; padding: 26px 0 34px; margin-top: 40px; }
+  footer.site { background: var(--navy); color: #cfd9dc; font-size: 12.5px; padding: 26px 0 34px; margin-top: 40px; }
   footer.site .wrap p + p { margin-top: 8px; }
 </style>
 </head>
@@ -127,7 +127,7 @@
         <div class="hint">PDF, Word ou photo · Confidentialité : le fichier reste sur votre appareil</div>
       </div>
       <div class="file-info" id="file-info"></div>
-      <p class="notice" style="margin-top:16px">Aucune donnée n'est transmise avant votre paiement. L'analyse animée ci-dessous illustre le parcours ; le rapport réel vous est livré sous 24 h après commande.</p>
+      <p class="notice" style="margin-top:16px">🔒 Rassurez-vous : rien n'est transmis avant votre paiement. Après commande, vous nous envoyez votre contrat par e-mail et recevez votre rapport sous 24 h.</p>
     </div>
 
     <!-- STEP 2 : analyzing -->
@@ -150,8 +150,8 @@
         <div class="check">✓</div>
         <h2>Votre rapport est prêt</h2>
         <p>Votre analyse a été préparée. Débloquez votre rapport complet (clauses 🔴/🟠/🟢 + références + arguments de négociation).</p>
-        <div class="deliver">🛡️ Paiement sécurisé · Rapport livré par e-mail sous <strong>24 h</strong> · Satisfait ou remboursé 14 jours</div>
-        <a class="btn btn-primary" id="cta" href="#" rel="noopener">Obtenir mon rapport — 15 €</a>
+        <div class="deliver">🛡️ Paiement sécurisé · Après commande, envoyez votre contrat par e-mail · Rapport livré sous <strong>24 h</strong> · Satisfait ou remboursé 14 jours</div>
+        <a class="btn btn-primary" id="cta" href="#" rel="noopener">Obtenir mon rapport — 10 €</a>
         <br>
         <button class="btn btn-ghost" id="reset">Analyser un autre document</button>
       </div>
@@ -164,8 +164,8 @@
     <h2>Comment ça marche</h2>
     <div class="how">
       <div class="h"><span class="num">1</span><b>Vous téléversez</b><span>Votre contrat, en toute confidentialité.</span></div>
-      <div class="h"><span class="num">2</span><b>Vous payez</b><span>15 €, une seule fois, paiement sécurisé.</span></div>
-      <div class="h"><span class="num">3</span><b>Vous recevez</b><span>Votre rapport complet sous 24 h.</span></div>
+      <div class="h"><span class="num">2</span><b>Vous payez</b><span>10 €, une seule fois, paiement sécurisé.</span></div>
+      <div class="h"><span class="num">3</span><b>Vous l'envoyez par e-mail</b><span>Après commande, et vous recevez le rapport sous 24 h.</span></div>
     </div>
   </div>
 

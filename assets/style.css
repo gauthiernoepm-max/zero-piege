@@ -1,13 +1,13 @@
 :root {
-  --navy: #0e2a47;
-  --navy-soft: #1d3d5e;
-  --yellow: #ffd449;
-  --bg: #f7f9fb;
+  --navy: #4a6b6e;
+  --navy-soft: #5b7c7f;
+  --yellow: #efc9b4;
+  --bg: #faf6f1;
   --card: #ffffff;
-  --ink: #22303c;
-  --muted: #5b6b7a;
-  --line: #dbe4ec;
-  --red: #c0392b;
+  --ink: #3a444a;
+  --muted: #6c787e;
+  --line: #e7e0d7;
+  --red: #c2604f;
   --radius: 14px;
 }
 
@@ -33,7 +33,7 @@ header.site .wrap {
 .logo { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
 .logo .shield { background: var(--yellow); color: var(--navy); border-radius: 50%; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; }
 .logo em { color: var(--yellow); font-style: normal; }
-nav a { color: #cfe0f0; text-decoration: none; font-size: 14px; margin-left: 18px; }
+nav a { color: #e7eef0; text-decoration: none; font-size: 14px; margin-left: 18px; }
 nav a:hover { color: var(--yellow); }
 
 .hero { text-align: center; padding: 64px 0 48px; }
@@ -47,12 +47,12 @@ nav a:hover { color: var(--yellow); }
   font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.08s ease;
 }
 .btn:active { transform: scale(0.98); }
-.btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #caa32b; }
+.btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #d9b096; }
 .btn-secondary { background: var(--navy); color: #fff; }
 
-.strip {
-  background: #fff8e1; border: 1.5px solid var(--yellow); border-radius: var(--radius);
-  padding: 12px 18px; text-align: center; color: #6b5a17; font-size: 14px; margin: 0 0 40px;
+  .strip {
+  background: #f8f1ea; border: 1.5px solid var(--yellow); border-radius: var(--radius);
+  padding: 12px 18px; text-align: center; color: #7a6a58; font-size: 14px; margin: 0 0 40px;
 }
 
 section.tools { padding: 8px 0 56px; }
@@ -72,9 +72,9 @@ section.tools > .wrap > h2, section.soon > .wrap > h2 {
   position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 800;
   padding: 4px 10px; border-radius: 999px; letter-spacing: 0.4px; text-transform: uppercase;
 }
-.badge.free { background: #e6f6ea; color: #1e7c3a; }
-.badge.paid { background: #edf1ff; color: var(--navy); }
-.badge.soon { background: #f0f2f5; color: var(--muted); }
+.badge.free { background: #eaf3ec; color: #3e7d55; }
+.badge.paid { background: #f6e7de; color: var(--navy); }
+.badge.soon { background: #efece6; color: var(--muted); }
 .card h3 { font-size: 17px; font-weight: 800; color: var(--navy); padding-right: 70px; }
 .card p { font-size: 14px; color: var(--muted); flex-grow: 1; }
 .card .price { font-weight: 900; color: var(--navy); font-size: 15px; }
@@ -85,10 +85,10 @@ section.tools > .wrap > h2, section.soon > .wrap > h2 {
 section.soon { padding-bottom: 64px; }
 
 footer.site {
-  background: var(--navy); color: #9fb4c9; font-size: 12.5px; padding: 26px 0 34px;
+  background: var(--navy); color: #cfd9dc; font-size: 12.5px; padding: 26px 0 34px;
 }
 footer.site .wrap p + p { margin-top: 8px; }
-footer.site a { color: #cfe0f0; }
+footer.site a { color: #e7eef0; }
 
 @media (max-width: 560px) {
   nav { display: none; }
