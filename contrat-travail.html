@@ -126,10 +126,15 @@
         <input type="file" id="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
         <div class="icon">📄</div>
         <p><strong>Glissez-déposez votre contrat</strong> ou cliquez pour choisir</p>
-        <div class="hint">PDF, Word ou photo · Confidentialité : le fichier reste sur votre appareil</div>
+        <div class="hint">PDF, Word ou photo</div>
+      </div>
+      <div style="margin-top:16px">
+        <label for="email" style="font-size:13px;color:var(--muted)">Votre e-mail (pour recevoir le rapport)</label>
+        <input type="email" id="email" placeholder="vous@exemple.fr"
+               style="width:100%;margin-top:6px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;background:#fff">
       </div>
       <div class="file-info" id="file-info"></div>
-      <p class="notice" style="margin-top:16px">🔒 Rassurez-vous : rien n'est transmis avant votre paiement. Après commande, vous nous envoyez votre contrat par e-mail et recevez votre rapport sous 24 h.</p>
+      <p class="notice" style="margin-top:16px">🔒 Votre document est transmis en toute confidentialité et <strong>analysé uniquement après votre paiement</strong>. Votre rapport vous est envoyé par e-mail sous 24 h.</p>
     </div>
 
     <!-- STEP 2 : analyzing -->
@@ -175,7 +180,7 @@
   <div class="section privacy">
     <h2>Votre confidentialité</h2>
     <ul>
-      <li>Le fichier reste sur <strong>votre appareil</strong> tant que vous n'avez pas payé.</li>
+      <li>Votre document est transmis de façon sécurisée et <strong>analysé uniquement après votre paiement</strong>.</li>
       <li>Après commande : documents <strong>anonymisés</strong>, analysés, puis <strong>supprimés</strong>.</li>
       <li>Aucune donnée cédée à un tiers. Analyse + relecture humaine.</li>
     </ul>
@@ -258,9 +263,18 @@
 
     function handle(f) {
       if (!f) return;
+      var emailEl = document.getElementById('email');
+      var email = emailEl ? emailEl.value.trim() : '';
+      if (!email) { alert('Merci d’indiquer votre e-mail pour recevoir le rapport.'); return; }
       fileInfo.style.display = 'block';
-      fileInfo.innerHTML = '📎 <span>' + f.name + '</span> (' + fileName(f.size) + ') — analyse lancée…';
-      setTimeout(runAnalysis, 600);
+      fileInfo.innerHTML = '📎 <span>' + f.name + '</span> (' + fileName(f.size) + ') — envoi sécurisé…';
+      uploadDocument(f, email).then(function () {
+        fileInfo.innerHTML = '📎 <span>' + f.name + '</span> — enregistré, en attente de paiement…';
+        runAnalysis();
+      }).catch(function (e) {
+        fileInfo.innerHTML = '⚠️ L’envoi a échoué. Réessayez.';
+        console.error(e);
+      });
     }
 
     resetBtn.addEventListener('click', function () {
@@ -276,5 +290,30 @@
     cta.href = CHECKOUT_URL;
   })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ⚠️ Config Supabase (à renseigner) :
+  var SUPABASE_URL = "__SUPABASE_URL__";          // ex. https://xxxx.supabase.co
+  var SUPABASE_ANON_KEY = "__SUPABASE_ANON_KEY__"; // clé publique (anon)
+  var PRODUCT = "contrat-travail";
+
+  var sb = window.supabase && window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function uploadDocument(file, email) {
+    var ext = (file.name.split('.').pop() || 'bin').toLowerCase();
+    var path = PRODUCT + '/' + crypto.randomUUID() + '.' + ext;
+    // 1. Upload du fichier dans le bucket 'documents'
+    return sb.storage.from('documents').upload(path, file).then(function (up) {
+      if (up.error) throw up.error;
+      // 2. Enregistrer la commande (status 'uploaded') via l'Edge Function create-order
+      return sb.functions.invoke('create-order', {
+        body: { product: PRODUCT, email: email, context: {}, path: path }
+      }).then(function (res) {
+        if (res.error) throw res.error;
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
