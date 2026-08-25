@@ -213,8 +213,8 @@
 
 <script>
   (function () {
-    // ⚠️ Coller ici l'URL du checkout Lemon Squeezy du produit « Audit de prêt immobilier » (10 €).
-    var CHECKOUT_URL = "";
+    // Checkout Lemon Squeezy du produit « Audit de prêt immobilier » (10 €).
+    var CHECKOUT_URL = "https://bobcles.lemonsqueezy.com/checkout/buy/11e86f3e-27da-49af-8057-1201c95b3f94";
 
     var wizard = document.getElementById('wizard');
     var dropzone = document.getElementById('dropzone');
@@ -306,15 +306,7 @@
       show('step-upload');
     });
 
-    if (CHECKOUT_URL) {
-      cta.href = CHECKOUT_URL;
-    } else {
-      cta.href = '#';
-      cta.addEventListener('click', function (e) {
-        e.preventDefault();
-        alert('Le paiement sera ouvert très bientôt — votre document est déjà enregistré.');
-      });
-    }
+    cta.href = CHECKOUT_URL;
   })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
