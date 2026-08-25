@@ -1,0 +1,345 @@
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit de prêt immobilier — avant de signer | Zéro Piège</title>
+<meta name="description" content="Téléversez votre offre de prêt, regardez l'audit se dérouler, obtenez votre rapport : clauses illicites repérées, leviers de négociation, questions à poser. Livré sous 48 h.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
+<style>
+  :root {
+    --navy: #33524f; --navy-soft: #4a6b6e; --yellow: #e39b7d; --bg: #faf6f1;
+    --card: #fff; --ink: #242b2f; --muted: #49555c; --line: #d6cabc;
+    --green: #2f6b45; --green-bg: #e6efe8; --red: #a94b3b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+         background: var(--bg); color: var(--ink); line-height: 1.55; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  .topbar { background: var(--navy); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
+  .topbar a { color: #e7eef0; text-decoration: none; font-weight: 800; }
+  .topbar a:hover { color: var(--yellow); }
+  .back { font-weight: 600 !important; font-size: 13.5px !important; }
+
+  .head { text-align: center; padding: 44px 0 10px; }
+  .head .kicker { display: inline-block; background: var(--yellow); color: var(--navy);
+      font-weight: 800; font-size: 13px; letter-spacing: 1px; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px; }
+  .head h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 900; color: var(--navy); letter-spacing: -0.7px; }
+  .head p { color: var(--muted); max-width: 620px; margin: 10px auto 0; }
+
+  /* ---- Wizard ---- */
+  .wizard { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px;
+            margin: 26px 0; padding: 28px; min-height: 380px; position: relative; overflow: hidden;
+            box-shadow: 0 2px 12px rgba(51,82,79,0.08); }
+  .step { display: none; }
+  .step.active { display: block; animation: fade 0.3s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* Upload */
+  .dropzone { border: 2px dashed #d9cfc4; border-radius: 14px; padding: 44px 20px; text-align: center;
+              cursor: pointer; transition: border-color 0.2s, background 0.2s; background: #fdfcf9; }
+  .dropzone:hover, .dropzone.drag { border-color: var(--navy); background: #f1f0ec; }
+  .dropzone .icon { font-size: 40px; margin-bottom: 10px; }
+  .dropzone p { color: var(--muted); font-size: 15px; }
+  .dropzone p strong { color: var(--navy); }
+  .dropzone .hint { font-size: 12.5px; color: #9a9186; margin-top: 8px; }
+  .dropzone input { display: none; }
+  .file-info { margin-top: 16px; display: none; background: var(--green-bg); border: 1px solid #cfe3d2;
+               border-radius: 10px; padding: 12px 16px; font-size: 14px; color: var(--green); }
+  .file-info span { font-weight: 700; }
+
+  /* Analyzing */
+  .analyzing { text-align: center; padding: 40px 10px; }
+  .spinner { width: 58px; height: 58px; border-radius: 50%; border: 5px solid #e8e2da; border-top-color: var(--navy);
+             margin: 0 auto 22px; animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .analyzing h2 { color: var(--navy); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .analyzing p { color: var(--muted); font-size: 15px; min-height: 22px; }
+  .steps { max-width: 360px; margin: 26px auto 0; text-align: left; }
+  .steps .s { display: flex; align-items: center; gap: 12px; padding: 7px 0; color: var(--muted); font-size: 14px; }
+  .steps .s .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #d9cfc4; flex-shrink: 0; }
+  .steps .s.done { color: var(--ink); }
+  .steps .s.done .dot { background: var(--green); border-color: var(--green); }
+  .steps .s.done .dot::after { content: "✓"; color: #fff; font-size: 11px; font-weight: 900; display: block; text-align: center; line-height: 12px; }
+  .steps .s.now { color: var(--navy); font-weight: 700; }
+  .steps .s.now .dot { border-color: var(--navy); border-top-width: 2px; animation: spin 0.9s linear infinite; }
+
+  /* Ready */
+  .ready { text-align: center; padding: 30px 10px; }
+  .ready .check { width: 74px; height: 74px; border-radius: 50%; background: var(--green-bg); margin: 0 auto 18px;
+                  display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--green); }
+  .ready h2 { color: var(--navy); font-size: 22px; font-weight: 900; }
+  .ready p { color: var(--muted); max-width: 460px; margin: 8px auto 22px; font-size: 15px; }
+  .ready .deliver { font-size: 13.5px; color: var(--muted); background: #f4f7fa; border-radius: 10px;
+                    padding: 10px 14px; max-width: 480px; margin: 0 auto 22px; }
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 10px; font-weight: 800; font-size: 15.5px;
+         text-decoration: none; border: none; cursor: pointer; }
+  .btn-primary { background: var(--yellow); color: var(--navy); box-shadow: 0 3px 0 #b97a58; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--line); margin-top: 12px; }
+  .btn-ghost:hover { border-color: var(--muted); }
+
+  /* Sections */
+  .section { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 22px 26px; margin: 20px 0;
+             box-shadow: 0 2px 10px rgba(51,82,79,0.06); }
+  .section h2 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+  .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .how .h { background: #f7f5f0; border-radius: 12px; padding: 14px; }
+  .how .h .num { font-weight: 900; color: var(--yellow); background: var(--navy); width: 26px; height: 26px;
+                 border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; margin-bottom: 8px; }
+  .how .h b { color: var(--navy); font-size: 14px; display: block; margin-bottom: 4px; }
+  .how .h span { font-size: 13px; color: var(--muted); }
+  .privacy { background: var(--green-bg); border-color: #cfe3d2; color: #1e5c33; }
+  .privacy h2 { color: var(--green); }
+  .privacy ul { margin-left: 18px; font-size: 14px; }
+  .privacy li { margin: 5px 0; }
+  .notice { font-size: 13px; color: var(--muted); background: #f8f1ea; border-left: 4px solid var(--yellow);
+            padding: 10px 14px; border-radius: 0 8px 8px 0; }
+
+  footer.site { background: var(--navy); color: #cfd9dc; font-size: 12.5px; padding: 26px 0 34px; margin-top: 40px; }
+  footer.site .wrap p + p { margin-top: 8px; }
+</style>
+  <link rel="canonical" href="https://zeropiege.com/audit-pret.html">
+  <meta property="og:url" content="https://zeropiege.com/audit-pret.html">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html">🛡️ Zéro Piège</a>
+    <a class="back" href="index.html">← Retour à l'accueil</a>
+  </div>
+</div>
+
+<div class="wrap head">
+  <span class="kicker">CONCIERGERIE — SANS COURTIER</span>
+  <h1>Audit de prêt immobilier, avant de signer</h1>
+  <p>Téléversez votre offre de prêt, suivez l'audit, recevez votre rapport : clauses illicites repérées, leviers de négociation, questions à poser à votre banque.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- WIZARD -->
+  <div class="wizard" id="wizard">
+
+    <!-- STEP 1 : upload -->
+    <div class="step active" id="step-upload">
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+        <div class="icon">🏦</div>
+        <p><strong>Glissez-déposez votre offre de prêt</strong> ou cliquez pour choisir</p>
+        <div class="hint">PDF ou photo — les « conditions particulières » suffisent</div>
+      </div>
+      <div style="margin-top:16px">
+        <label for="email" style="font-size:13px;color:var(--muted)">Votre e-mail (pour recevoir le rapport)</label>
+        <input type="email" id="email" placeholder="vous@exemple.fr"
+               style="width:100%;margin-top:6px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;background:#fff">
+      </div>
+      <button class="btn btn-primary" id="send-btn" style="width:100%;margin-top:14px">Envoyer mon document</button>
+      <p id="err" style="display:none;color:var(--red);font-size:13px;margin-top:10px"></p>
+      <div class="file-info" id="file-info"></div>
+      <p class="notice" style="margin-top:16px">🔒 Votre offre est transmise en toute confidentialité et <strong>analysée uniquement après votre paiement</strong>. Votre rapport vous est envoyé par e-mail sous 48 h.</p>
+    </div>
+
+    <!-- STEP 2 : analyzing -->
+    <div class="step" id="step-analyzing">
+      <div class="analyzing">
+        <div class="spinner"></div>
+        <h2>Audit de votre offre en cours…</h2>
+        <p id="analyze-status">Lecture du document…</p>
+        <div class="steps">
+          <div class="s" id="st1"><span class="dot"></span>Lecture du document</div>
+          <div class="s" id="st2"><span class="dot"></span>Vérification (taux, garantie, assurance, indemnités…)</div>
+          <div class="s" id="st3"><span class="dot"></span>Rédaction de votre rapport</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 : ready -->
+    <div class="step" id="step-ready">
+      <div class="ready">
+        <div class="check">✓</div>
+        <h2>Votre rapport est prêt</h2>
+        <p>Votre audit a été préparé. Débloquez votre rapport complet (anomalies 🔴 / négociables 🟠 / conformes 🟢 + questions à poser).</p>
+        <div class="deliver">🛡️ Paiement sécurisé · Rapport livré sous <strong>48 h</strong> · Document supprimé après analyse · Satisfait ou remboursé 14 jours</div>
+        <a class="btn btn-primary" id="cta" href="#" rel="noopener">J'audite mon offre de prêt — 19 €</a>
+        <br>
+        <button class="btn btn-ghost" id="reset">Auditer un autre document</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOW -->
+  <div class="section">
+    <h2>Comment ça marche</h2>
+    <div class="how">
+      <div class="h"><span class="num">1</span><b>Vous téléversez</b><span>Votre offre de prêt, en toute confidentialité.</span></div>
+      <div class="h"><span class="num">2</span><b>Vous payez</b><span>19 €, une seule fois, paiement sécurisé.</span></div>
+      <div class="h"><span class="num">3</span><b>Vous recevez le rapport</b><span>Par e-mail sous 48 h : anomalies, leviers, questions.</span></div>
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="section privacy">
+    <h2>Votre confidentialité</h2>
+    <ul>
+      <li>Votre offre est transmise de façon sécurisée et <strong>analysée uniquement après votre paiement</strong>.</li>
+      <li>Documents <strong>anonymisés</strong>, analysés, puis <strong>supprimés</strong>.</li>
+      <li>Aucune donnée financière cédée à un tiers — ni banque, ni courtier, ni assureur.</li>
+    </ul>
+  </div>
+
+  <!-- DISCLAIMER -->
+    <div class="section">
+    <h2>Avertissement</h2>
+    <p class="notice" style="font-size:14px; background:transparent; border-left-color:#c7d4e0; color:var(--muted)">
+      Ce service est un outil d'information, pas un conseil financier ou juridique. L'analyse repose sur le Code de la consommation
+      (crédit immobilier) et les lois Scrivener et Lemoine, en droit général ; elle ne connaît pas la politique commerciale de votre
+      établissement. Les estimations d'économies sont indicatives et ne constituent pas des promesses. Ce rapport vous aide à vérifier
+      et négocier mais ne garantit aucun résultat. Pour une décision importante, consultez votre banquier, un courtier ou un avocat.
+    </p>
+  </div>
+
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong style="color:#fff">Zéro Piège</strong> © 2026 — Tous droits réservés.</p>
+    <p>Zéro Piège fournit des outils d'information. Cela ne constitue pas un conseil financier ou juridique et
+    ne remplace pas la consultation d'un professionnel.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // ⚠️ Coller ici l'URL du checkout Lemon Squeezy du produit « Audit de prêt immobilier » (19 €).
+    var CHECKOUT_URL = "";
+
+    var wizard = document.getElementById('wizard');
+    var dropzone = document.getElementById('dropzone');
+    var fileInput = document.getElementById('file');
+    var fileInfo = document.getElementById('file-info');
+    var cta = document.getElementById('cta');
+    var resetBtn = document.getElementById('reset');
+
+    function show(id) {
+      var steps = wizard.querySelectorAll('.step');
+      for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
+      document.getElementById(id).classList.add('active');
+    }
+    function fileName(size) {
+      if (size < 1024) return size + ' o';
+      if (size < 1048576) return Math.round(size / 1024) + ' Ko';
+      return (size / 1048576).toFixed(1) + ' Mo';
+    }
+    function runAnalysis() {
+      show('step-analyzing');
+      var phases = [
+        { s: 'st1', text: 'Lecture du document…' },
+        { s: 'st2', text: 'Vérification (taux, garantie, assurance, indemnités…)' },
+        { s: 'st3', text: 'Rédaction de votre rapport…' }
+      ];
+      var i = 0;
+      function next() {
+        if (i > 0) document.getElementById(phases[i - 1].s).classList.add('done');
+        if (i < phases.length) {
+          document.getElementById(phases[i].s).classList.add('now');
+          document.getElementById('analyze-status').textContent = phases[i].text;
+          i++;
+          setTimeout(next, 1500);
+        } else {
+          show('step-ready');
+        }
+      }
+      next();
+    }
+
+    dropzone.addEventListener('click', function () { fileInput.click(); });
+    dropzone.addEventListener('dragover', function (e) { e.preventDefault(); dropzone.classList.add('drag'); });
+    dropzone.addEventListener('dragleave', function () { dropzone.classList.remove('drag'); });
+    var errEl = document.getElementById('err');
+    var sendBtn = document.getElementById('send-btn');
+    var selectedFile = null;
+
+    function stage(f) {
+      if (!f) return;
+      selectedFile = f;
+      errEl.style.display = 'none';
+      fileInfo.style.display = 'block';
+      fileInfo.innerHTML = '📎 <span>' + f.name + '</span> (' + fileName(f.size) + ') — prêt à envoyer.';
+    }
+
+    dropzone.addEventListener('drop', function (e) {
+      e.preventDefault(); dropzone.classList.remove('drag');
+      if (e.dataTransfer.files.length) stage(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files.length) stage(fileInput.files[0]);
+    });
+
+    function sendFile() {
+      var email = document.getElementById('email').value.trim();
+      if (!selectedFile) { showErr('Choisissez d’abord un document.'); return; }
+      if (!email) { showErr('Indiquez votre e-mail pour recevoir le rapport.'); return; }
+      errEl.style.display = 'none';
+      fileInfo.innerHTML = '📎 <span>' + selectedFile.name + '</span> — envoi sécurisé…';
+      uploadDocument(selectedFile, email).then(function () {
+        fileInfo.innerHTML = '📎 <span>' + selectedFile.name + '</span> — enregistré, en attente de paiement…';
+        runAnalysis();
+      }).catch(function (e) {
+        fileInfo.innerHTML = '';
+        showErr('L’envoi a échoué. Vérifiez votre connexion et réessayez.');
+        console.error(e);
+      });
+    }
+    function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
+    sendBtn.addEventListener('click', sendFile);
+
+    resetBtn.addEventListener('click', function () {
+      fileInput.value = '';
+      fileInfo.style.display = 'none';
+      ['st1', 'st2', 'st3'].forEach(function (id) {
+        var el = document.getElementById(id);
+        el.classList.remove('done', 'now');
+      });
+      show('step-upload');
+    });
+
+    if (CHECKOUT_URL) {
+      cta.href = CHECKOUT_URL;
+    } else {
+      cta.href = '#';
+      cta.addEventListener('click', function (e) {
+        e.preventDefault();
+        alert('Le paiement sera ouvert très bientôt — votre document est déjà enregistré.');
+      });
+    }
+  })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ⚠️ Config Supabase :
+  var SUPABASE_URL = "https://mybrmbkjlgmqdcgnqubj.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_IemWGEWXchl4DpNKpBD-3A_Oilu-WV_";
+  var PRODUCT = "audit-pret";
+
+  var sb = window.supabase && window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function uploadDocument(file, email) {
+    var ext = (file.name.split('.').pop() || 'bin').toLowerCase();
+    var path = PRODUCT + '/' + crypto.randomUUID() + '.' + ext;
+    // 1. Upload du fichier dans le bucket 'documents'
+    return sb.storage.from('documents').upload(path, file).then(function (up) {
+      if (up.error) throw up.error;
+      // 2. Enregistrer la commande (status 'uploaded') via l'Edge Function create-order
+      return sb.functions.invoke('create-order', {
+        body: { product: PRODUCT, email: email, context: {}, path: path }
+      }).then(function (res) {
+        if (res.error) throw res.error;
+      });
+    });
+  }
+</script>
+</body>
+</html>
