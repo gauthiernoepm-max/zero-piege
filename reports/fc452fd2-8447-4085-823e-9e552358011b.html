@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse de votre offre de prêt — Zéro Piège</title>
+<style>
+  :root{
+    --color-header-bg:#2d4a47; --color-header-accent:#e08e45;
+    --color-illicite:#c0392b; --color-illicite-bg:#fdecea;
+    --color-negocier:#e08e45; --color-negocier-bg:#fdf3e7;
+    --color-conforme:#2e7d32; --color-conforme-bg:#eaf5ea;
+    --color-info:#2d4a47; --color-info-bg:#eef2f1;
+    --color-text:#1f2a28; --color-text-muted:#55605d; --color-border:#e2e6e5;
+    --space-xs:4px; --space-sm:8px; --space-md:16px; --space-lg:24px; --space-xl:32px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",'Noto Sans',Arial,sans-serif;color:var(--color-text);background:#f4f6f5;line-height:1.55;font-size:10.5pt}
+  .page-content{max-width:760px;margin:0 auto;background:#fff;padding:0 40px 40px}
+  .doc-header{background:var(--color-header-bg);color:#fff;padding:28px 40px;margin-bottom:var(--space-lg)}
+  .doc-header h1{margin:0 0 6px;font-size:20pt;font-weight:700}
+  .doc-header .subtitle{color:var(--color-header-accent);font-size:10.5pt;margin:0 0 4px}
+  .doc-header .meta{color:#cfd9d7;font-size:8.5pt;font-style:italic;margin:0}
+  .context-block{border-left:4px solid var(--color-header-bg);padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-lg)}
+  .context-block h2{font-size:13pt;margin:0 0 var(--space-sm)}
+  .context-block p{margin:0;color:var(--color-text-muted);font-style:italic}
+  hr.divider{border:none;border-top:1px solid var(--color-border);margin:var(--space-lg) 0}
+  .section-banner{color:#fff;padding:10px 16px;font-weight:700;font-size:12pt;margin-bottom:var(--space-sm);border-radius:3px}
+  .section-banner.illicite{background:var(--color-illicite)}
+  .section-banner.negocier{background:var(--color-negocier)}
+  .section-banner.conforme{background:var(--color-conforme)}
+  .section-banner.info{background:var(--color-info)}
+  .section-subtitle{font-style:italic;color:var(--color-text-muted);font-size:9pt;margin:0 0 var(--space-md)}
+  .item{border-left:4px solid var(--color-header-bg);padding-left:var(--space-md);margin-bottom:var(--space-lg)}
+  .item.illicite{border-left-color:var(--color-illicite)}
+  .item.negocier{border-left-color:var(--color-negocier)}
+  .item h3{font-size:12pt;margin:0 0 var(--space-sm)}
+  .field{margin-bottom:var(--space-sm)}
+  .field-label{font-weight:700;font-size:8.5pt;text-transform:uppercase;letter-spacing:.02em;color:var(--color-text-muted);margin-bottom:2px}
+  .field-body{margin:0}
+  .field-body ul,.levier-box ul,.question-group ul{margin:2px 0 0;padding-left:18px}
+  .field-body li,.levier-box li,.question-group li{margin-bottom:3px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:3px;font-weight:700;font-size:9pt}
+  .badge.illicite{background:var(--color-illicite-bg);color:var(--color-illicite)}
+  .badge.negocier{background:var(--color-negocier-bg);color:var(--color-negocier)}
+  .levier-box{background:var(--color-info-bg);border-radius:4px;padding:var(--space-sm) var(--space-md);margin-top:var(--space-sm)}
+  .levier-box .field-label{color:var(--color-header-bg)}
+  .conforme-item{margin-bottom:var(--space-md)}
+  .conforme-item h4{font-size:10.5pt;margin:0 0 2px;color:var(--color-conforme)}
+  .conforme-item p{margin:0}
+  .question-group{margin-bottom:var(--space-md)}
+  .question-group h4{font-size:10pt;margin:0 0 var(--space-xs)}
+  .question-group li{font-style:italic;color:var(--color-text-muted);margin-bottom:4px}
+  table.savings-table{width:100%;border-collapse:collapse;margin:var(--space-md) 0;font-size:9.5pt}
+  table.savings-table th{background:var(--color-header-bg);color:#fff;text-align:left;padding:8px 10px;font-weight:600}
+  table.savings-table td{padding:8px 10px;border-bottom:1px solid var(--color-border);vertical-align:top}
+  table.savings-table tr:nth-child(even) td{background:#f7f9f8}
+  .total-row{background:var(--color-info-bg);border-radius:4px;padding:var(--space-sm) var(--space-md);margin-top:var(--space-sm);font-weight:700}
+  .total-row .amount{color:var(--color-header-bg);font-size:12pt}
+  ol.reco-list{margin:0;padding-left:20px}
+  ol.reco-list li{margin-bottom:var(--space-sm)}
+  ol.reco-list li strong{color:var(--color-header-bg)}
+  .footer-note{font-size:8pt;color:var(--color-text-muted);font-style:italic;border-top:1px solid var(--color-border);padding-top:var(--space-sm);margin-top:var(--space-xl)}
+</style></head><body>
+<div class="doc-header">
+  <h1>Analyse de votre offre de prêt</h1>
+  <p class="subtitle">Rapport de conformité — analyse de votre document</p>
+  <p class="meta">Généré le 26 août 2026 — document confidentiel</p>
+</div>
+<div class="page-content">
+  
+    <div class="context-block">
+      <h2>Audit de prêt immobilier — Rapport d'analyse</h2>
+      <p>
+        Offre de prêt n° OP-2026-084512 € (SOFINORD)<br>
+        Document analysé le 10 mars 2026 — Contexte : Prêt immobilier réglementé de 225 000 € sur 20 ans à taux fixe pour l'acquisition d'un appartement T3 à Grenoble.
+      </p>
+    </div><hr class="divider">
+  <div class="section-banner illicite">Clauses illicites ou à faire corriger</div>
+  <p class="section-subtitle">À corriger avant signature — risques juridiques ou financiers avérés</p>
+  <p class="section-subtitle">Aucune clause illicite détectée dans ce document.</p>
+  <hr class="divider">
+  <div class="section-banner negocier">Points à négocier avec la banque</div>
+  <p class="section-subtitle">Défavorable ou coûteux — opportunités de gains financiers ou juridiques</p>
+  <div class="item negocier">
+      <h3>Frais de dossier</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Frais de dossier de 900 € débités à la première échéance, sans justification détaillée ni possibilité de négociation apparente.</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Frais de dossier non justifiés ni détaillés dans l'offre</li><li>Pas de mention de possibilité de négociation ou de réduction</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Coût supplémentaire non transparent et potentiellement évitable</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L312-19 du Code de la consommation (transparence des frais)</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Frais de dossier élevés et peu transparents</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Demander une justification détaillée des frais de dossier</li><li>Négocier une réduction ou suppression des frais</li><li>Comparer avec d'autres offres concurrentes</li></ul></div>
+    </div><div class="item negocier">
+      <h3>Coût total du crédit</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Coût total du crédit indiqué à 91 421,80 €, incluant intérêts, frais de dossier, garantie et assurance obligatoire. Le TAEG de 4,12 % semble cohérent avec le taux nominal de 3,60 %, mais le détail des composantes du coût total n'est pas suffisamment explicite.</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Coût total du crédit non ventilé en détail (intérêts, frais, assurance)</li><li>Pas de comparaison avec d'autres offres ou benchmarks</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Difficulté à évaluer la réelle compétitivité de l'offre</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L314-1 du Code de la consommation (transparence du TAEG et coût total)</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Coût total peu transparent et non comparé</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Demander un détail complet des composantes du coût total</li><li>Comparer avec d'autres offres similaires pour évaluer la compétitivité</li></ul></div>
+    </div><div class="item negocier">
+      <h3>Assurance emprunteur</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Assurance emprunteur obligatoire proposée par CALM Assurances (filiale de SOFINORD) avec une quotité de 100 % par tête et un coût total de 16 200 € sur la durée. La loi Lemoine permet la délégation d'assurance sous réserve d'équivalence de garanties, mais l'offre ne mentionne pas explicitement cette possibilité ni les critères d'équivalence.</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Assurance proposée par une filiale du prêteur sans mention explicite de la possibilité de délégation</li><li>Pas de détail sur les critères d'équivalence de garanties pour une délégation</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Coût d'assurance potentiellement surévalué et manque de transparence sur les alternatives</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L313-30 du Code de la consommation (délégation d'assurance)</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Assurance peu transparente et potentiellement coûteuse</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Vérifier les critères d'équivalence de garanties pour une délégation d'assurance</li><li>Comparer le coût avec des assureurs externes</li><li>Négocier une réduction du coût de l'assurance proposée</li></ul></div>
+    </div>
+  <hr class="divider">
+  <div class="section-banner conforme">Points conformes</div>
+  <p class="section-subtitle">Conformes à la réglementation — pas d'action requise</p>
+  <div class="item conforme"><h3>Cadre légal de l'offre</h3><div class="conforme-item"><h4>Délai de réflexion et validité de l'offre</h4><p>Délai de réflexion de 10 jours francs et validité de l'offre pendant 30 jours conformément à l'article L312-14 du Code de la consommation.</p></div><div class="conforme-item"><h4>Condition suspensive</h4><p>Condition suspensive liée à l'obtention du prêt mentionnée, avec restitution des sommes versées en cas de non-obtention (article L313-41 et L312-16).</p></div><div class="conforme-item"><h4>Reconnaissance de la FISE</h4><p>Reconnaissance de réception de la fiche d'information standardisée européenne (FISE) par l'emprunteur.</p></div></div><div class="item conforme"><h3>Caractéristiques financières</h3><div class="conforme-item"><h4>Taux et TAEG</h4><p>Taux débiteur nominal fixe de 3,60 % et TAEG fixe de 4,12 %, incluant intérêts, frais de dossier, frais de garantie et coût de l'assurance obligatoire.</p></div><div class="conforme-item"><h4>Mensualité et coût total</h4><p>Mensualité de 1 318,42 € (assurance incluse) et coût total du crédit de 91 421,80 €.</p></div><div class="conforme-item"><h4>Garantie</h4><p>Garantie par caution SOFINORD avec 50 % restituables en fin de prêt (1 800 €).</p></div></div><div class="item conforme"><h3>Assurance emprunteur</h3><div class="conforme-item"><h4>Loi Lemoine</h4><p>Mention de la possibilité de résilier ou substituer l'assurance emprunteur à tout moment pour un contrat équivalent (article L313-30).</p></div><div class="conforme-item"><h4>Quotité et risques couverts</h4><p>Quotité assurée à 100 % par tête avec couverture des risques décès, PTIA et IPT/ITT (forfait hospitalisation 180 jours).</p></div></div><div class="item conforme"><h3>Remboursement anticipé</h3><div class="conforme-item"><h4>Indemnité de remboursement anticipé (IRA)</h4><p>IRA plafonnée à 6 mois d'intérêts ou 3 % du capital restant dû, conformément à l'article R.314-18 et L.312-34 du Code de la consommation.</p></div><div class="conforme-item"><h4>Modulation des mensualités</h4><p>Possibilité de modulation des mensualités une fois par an, ± 20 %, après la 24e échéance.</p></div></div>
+  <hr class="divider">
+  <div class="section-banner info">Questions à poser avant de signer</div>
+  <p class="section-subtitle">À clarifier avec la banque pour éviter les mauvaises surprises</p>
+  <div class="question-group"><h4>Frais et garanties</h4><ul><li>Les frais de dossier de 900 € sont-ils négociables ou justifiables par des services spécifiques ?</li><li>La garantie par caution SOFINORD avec 50 % restituables en fin de prêt est-elle la solution la plus avantageuse comparée à une hypothèque ?</li><li>Quels sont les frais annexes éventuels non mentionnés dans l'offre (frais de mainlevée, etc.) ?</li></ul></div><div class="question-group"><h4>Assurance emprunteur</h4><ul><li>Quels sont les critères précis d'équivalence de garanties pour une délégation d'assurance selon la loi Lemoine ?</li><li>Le coût total de l'assurance de 16 200 € est-il compétitif par rapport à des assureurs externes ?</li><li>La quotité de 100 % est-elle nécessaire ou une réduction est-elle possible pour diminuer le coût ?</li></ul></div><div class="question-group"><h4>Flexibilité et remboursement</h4><ul><li>La modulation des mensualités est-elle possible dès la première année ou uniquement après la 24e échéance ?</li><li>En cas de remboursement anticipé partiel inférieur à 10 % du capital initial, une IRA est-elle applicable ?</li><li>Quelles sont les conditions pour un report de mensualité ou un différé de remboursement ?</li></ul></div><div class="question-group"><h4>Transparence et conformité</h4><ul><li>L'offre mentionne-t-elle explicitement la possibilité de refuser la domiciliation des revenus ou des prélèvements automatiques ?</li><li>Le tableau d'amortissement détaillé est-il joint à l'offre ou disponible sur demande ?</li><li>Quels sont les éventuels frais de mainlevée d'hypothèque ou de caution en cas de revente du bien ?</li></ul></div>
+  <hr class="divider">
+  <div class="section-banner info">Estimation indicative des leviers d'économie</div>
+  <p class="section-subtitle">Ordres de grandeur prudents à confirmer avec la banque</p>
+  <table class="savings-table">
+    <thead><tr><th>Poste</th><th>Situation actuelle</th><th>Potentiel d'économie</th><th>Économie estimée (sur 20 ans)</th></tr></thead>
+    <tbody><tr><td>Frais de dossier</td><td>900 € de frais de dossier</td><td>Négociation à 0 € ou réduction à 300 €</td><td>600 €</td></tr><tr><td>Assurance emprunteur</td><td>16 200 € sur la durée (0,36 % du capital initial)</td><td>Délégation d'assurance avec un taux de 0,20 %</td><td>3 600 €</td></tr><tr><td>Garantie (caution)</td><td>1 800 € (50 % restituables en fin de prêt)</td><td>Comparaison avec une hypothèque (coût total estimé à 1 200 €)</td><td>600 €</td></tr></tbody>
+  </table>
+  <div class="total-row">Gain total estimé : <span class="amount">4 800 €</span><span style="font-weight:400;"> — soit ~5 % du coût total du crédit</span></div>
+  <hr class="divider">
+  <div class="section-banner info">Recommandations finales</div>
+  <ol class="reco-list"><li><strong>Négocier les frais de dossier :</strong> Demander une justification détaillée des 900 € de frais de dossier et négocier une réduction ou suppression, en comparant avec d'autres offres.</li><li><strong>Évaluer la délégation d'assurance :</strong> Vérifier les critères d'équivalence de garanties pour une délégation d'assurance et comparer le coût avec des assureurs externes afin de réduire le coût total de l'assurance.</li><li><strong>Comparer les garanties :</strong> Analyser la pertinence de la caution SOFINORD par rapport à une hypothèque en termes de coût total et de restitution, en tenant compte des frais annexes.</li><li><strong>Demander un tableau d'amortissement détaillé :</strong> Exiger un tableau d'amortissement complet pour vérifier la répartition des intérêts et du capital sur la durée du prêt.</li><li><strong>Vérifier les conditions de modulation et remboursement anticipé :</strong> Clarifier les conditions de modulation des mensualités et les modalités de remboursement anticipé partiel pour anticiper d'éventuels changements de situation.</li></ol>
+  <p class="footer-note">ce rapport est un outil d'information, pas un conseil
+  financier ou juridique. L'analyse repose sur le Code de la consommation (crédit immobilier,
+  droit général). Pour une décision importante, consultez votre banque, un courtier ou un avocat.</p>
+</div>
+</body></html>
