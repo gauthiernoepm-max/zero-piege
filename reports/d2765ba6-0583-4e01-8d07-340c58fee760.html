@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse de votre offre de prêt — Zéro Piège</title>
+<style>
+  :root{
+    --color-header-bg:#2d4a47; --color-header-accent:#e08e45;
+    --color-illicite:#c0392b; --color-illicite-bg:#fdecea;
+    --color-negocier:#e08e45; --color-negocier-bg:#fdf3e7;
+    --color-conforme:#2e7d32; --color-conforme-bg:#eaf5ea;
+    --color-info:#2d4a47; --color-info-bg:#eef2f1;
+    --color-text:#1f2a28; --color-text-muted:#55605d; --color-border:#e2e6e5;
+    --space-xs:4px; --space-sm:8px; --space-md:16px; --space-lg:24px; --space-xl:32px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",'Noto Sans',Arial,sans-serif;color:var(--color-text);background:#f4f6f5;line-height:1.55;font-size:10.5pt}
+  .page-content{max-width:760px;margin:0 auto;background:#fff;padding:0 40px 40px}
+  .doc-header{background:var(--color-header-bg);color:#fff;padding:28px 40px;margin-bottom:var(--space-lg)}
+  .doc-header h1{margin:0 0 6px;font-size:20pt;font-weight:700}
+  .doc-header .subtitle{color:var(--color-header-accent);font-size:10.5pt;margin:0 0 4px}
+  .doc-header .meta{color:#cfd9d7;font-size:8.5pt;font-style:italic;margin:0}
+  .context-block{border-left:4px solid var(--color-header-bg);padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-lg)}
+  .context-block h2{font-size:13pt;margin:0 0 var(--space-sm)}
+  .context-block p{margin:0;color:var(--color-text-muted);font-style:italic}
+  hr.divider{border:none;border-top:1px solid var(--color-border);margin:var(--space-lg) 0}
+  .section-banner{color:#fff;padding:10px 16px;font-weight:700;font-size:12pt;margin-bottom:var(--space-sm);border-radius:3px}
+  .section-banner.illicite{background:var(--color-illicite)}
+  .section-banner.negocier{background:var(--color-negocier)}
+  .section-banner.conforme{background:var(--color-conforme)}
+  .section-banner.info{background:var(--color-info)}
+  .section-subtitle{font-style:italic;color:var(--color-text-muted);font-size:9pt;margin:0 0 var(--space-md)}
+  .item{border-left:4px solid var(--color-header-bg);padding-left:var(--space-md);margin-bottom:var(--space-lg)}
+  .item.illicite{border-left-color:var(--color-illicite)}
+  .item.negocier{border-left-color:var(--color-negocier)}
+  .item h3{font-size:12pt;margin:0 0 var(--space-sm)}
+  .field{margin-bottom:var(--space-sm)}
+  .field-label{font-weight:700;font-size:8.5pt;text-transform:uppercase;letter-spacing:.02em;color:var(--color-text-muted);margin-bottom:2px}
+  .field-body{margin:0}
+  .field-body ul,.levier-box ul,.question-group ul{margin:2px 0 0;padding-left:18px}
+  .field-body li,.levier-box li,.question-group li{margin-bottom:3px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:3px;font-weight:700;font-size:9pt}
+  .badge.illicite{background:var(--color-illicite-bg);color:var(--color-illicite)}
+  .badge.negocier{background:var(--color-negocier-bg);color:var(--color-negocier)}
+  .levier-box{background:var(--color-info-bg);border-radius:4px;padding:var(--space-sm) var(--space-md);margin-top:var(--space-sm)}
+  .levier-box .field-label{color:var(--color-header-bg)}
+  .conforme-item{margin-bottom:var(--space-md)}
+  .conforme-item h4{font-size:10.5pt;margin:0 0 2px;color:var(--color-conforme)}
+  .conforme-item p{margin:0}
+  .question-group{margin-bottom:var(--space-md)}
+  .question-group h4{font-size:10pt;margin:0 0 var(--space-xs)}
+  .question-group li{font-style:italic;color:var(--color-text-muted);margin-bottom:4px}
+  table.savings-table{width:100%;border-collapse:collapse;margin:var(--space-md) 0;font-size:9.5pt}
+  table.savings-table th{background:var(--color-header-bg);color:#fff;text-align:left;padding:8px 10px;font-weight:600}
+  table.savings-table td{padding:8px 10px;border-bottom:1px solid var(--color-border);vertical-align:top}
+  table.savings-table tr:nth-child(even) td{background:#f7f9f8}
+  .total-row{background:var(--color-info-bg);border-radius:4px;padding:var(--space-sm) var(--space-md);margin-top:var(--space-sm);font-weight:700}
+  .total-row .amount{color:var(--color-header-bg);font-size:12pt}
+  ol.reco-list{margin:0;padding-left:20px}
+  ol.reco-list li{margin-bottom:var(--space-sm)}
+  ol.reco-list li strong{color:var(--color-header-bg)}
+  .footer-note{font-size:8pt;color:var(--color-text-muted);font-style:italic;border-top:1px solid var(--color-border);padding-top:var(--space-sm);margin-top:var(--space-xl)}
+</style></head><body>
+<div class="doc-header">
+  <h1>Analyse de votre offre de prêt</h1>
+  <p class="subtitle">Rapport de conformité — analyse de votre document</p>
+  <p class="meta">Généré le 26 août 2026 — document confidentiel</p>
+</div>
+<div class="page-content">
+  
+    <div class="context-block">
+      <h2>Audit de prêt immobilier — Rapport d'analyse</h2>
+      <p>
+        Offre de prêt n° OP-2026-084512 € (SOFINORD)<br>
+        Document analysé le 10 mars 2026 — Contexte : Prêt réglementé de 225 000 € sur 20 ans à taux fixe de 3,60 % (TAEG 4,12 %) pour l'acquisition d'un appartement T3 à Grenoble.
+      </p>
+    </div><hr class="divider">
+  <div class="section-banner illicite">Clauses illicites ou à faire corriger</div>
+  <p class="section-subtitle">À corriger avant signature — risques juridiques ou financiers avérés</p>
+  <p class="section-subtitle">Aucune clause illicite détectée dans ce document.</p>
+  <hr class="divider">
+  <div class="section-banner negocier">Points à négocier avec la banque</div>
+  <p class="section-subtitle">Défavorable ou coûteux — opportunités de gains financiers ou juridiques</p>
+  <div class="item negocier">
+      <h3>Frais de garantie (caution SOFINORD)</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Garantie sous forme de caution SOFINORD avec un coût de 1 800,00 € dont 50 % restituables en fin de prêt (soit 900,00 €).</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Coût total de la garantie élevé comparé à une hypothèque classique (frais de mainlevée inclus).</li><li>Remboursement partiel de 900,00 € en fin de prêt, ce qui peut représenter un coût supplémentaire si l'emprunteur souhaite solder le prêt avant terme.</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Coût global supérieur à une hypothèque classique avec mainlevée gratuite après délai légal.</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L313-22 du Code de la consommation (garanties alternatives à l'hypothèque).</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Coût de garantie élevé et restitution partielle défavorable.</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Négocier une caution moins chère ou opter pour une hypothèque classique.</li><li>Demander une restitution totale de la caution en cas de remboursement anticipé.</li></ul></div>
+    </div><div class="item negocier">
+      <h3>Assurance emprunteur groupée (CALM Assurances)</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Assurance obligatoire proposée par CALM Assurances (filiale de SOFINORD) avec un coût total de 16 200,00 € sur la durée, quotité 100 % par tête et franchise ITT/IPT de 180 jours.</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Coût total de l'assurance élevé (0,36 % du capital initial sur 20 ans).</li><li>Franchise ITT/IPT de 180 jours défavorable pour l'emprunteur (seuil légal à 90 jours).</li><li>Pas de mention claire de la possibilité de délégation d'assurance dès la souscription (loi Lemoine).</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Coût d'assurance supérieur à une délégation externe et couverture moins protectrice.</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L313-30 du Code des assurances (délégation d'assurance) et loi Lemoine 2022.</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Coût et couverture de l'assurance défavorables par rapport au marché.</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Comparer le coût avec une délégation d'assurance externe (quotité 100 % et garanties équivalentes).</li><li>Négocier une franchise ITT/IPT à 90 jours.</li><li>Exiger une mention explicite de la possibilité de délégation dès la souscription.</li></ul></div>
+    </div><div class="item negocier">
+      <h3>Modulation des mensualités limitée</h3>
+      <div class="field"><div class="field-label">L'élément</div><p class="field-body">Modulation des mensualités possible une fois par an, ± 20 %, mais uniquement après la 24e échéance.</p></div>
+      <div class="field"><div class="field-label">Le problème</div><ul class="field-body"><li>Délai d'attente de 2 ans pour bénéficier de la modulation.</li><li>Plafond de ± 20 % restrictif par rapport à d'autres offres (certaines permettent ± 30 % ou plus).</li></ul></div>
+      <div class="field"><div class="field-label">Risque</div><p class="field-body">Flexibilité réduite en cas de changement de situation financière.</p></div>
+      <div class="field"><div class="field-label">La référence</div><p class="field-body">Article L312-35 du Code de la consommation (modularité des prêts).</p></div>
+      <div class="field"><div class="field-label">La gravité</div><span class="badge negocier">Modulation tardive et limitée défavorable pour l'emprunteur.</span></div>
+      <div class="levier-box"><div class="field-label">Le levier</div><ul><li>Négocier une modulation dès la 12e échéance.</li><li>Demander un plafond de modulation supérieur à ± 20 %.</li></ul></div>
+    </div>
+  <hr class="divider">
+  <div class="section-banner conforme">Points conformes</div>
+  <p class="section-subtitle">Conformes à la réglementation — pas d'action requise</p>
+  <div class="item conforme"><h3>Cadre légal de l'offre</h3><div class="conforme-item"><h4>Délai de réflexion et validité de l'offre</h4><p>Délai de réflexion de 10 jours francs et validité de l'offre pendant 30 jours, conformément aux articles L312-14 et L312-16 du Code de la consommation.</p></div><div class="conforme-item"><h4>Condition suspensive</h4><p>Condition suspensive liée à l'obtention du prêt, avec restitution des sommes versées en cas de non-obtention, conforme à l'article L313-41 du Code de la consommation.</p></div><div class="conforme-item"><h4>FISE (Fiche d'Information Standardisée Européenne)</h4><p>Mention de la réception de la FISE, conforme à l'article L313-3 du Code de la consommation.</p></div></div><div class="item conforme"><h3>Taux et coût total</h3><div class="conforme-item"><h4>TAEG</h4><p>TAEG de 4,12 % incluant intérêts, frais de dossier, garantie et assurance, conforme à l'article L314-1 du Code de la consommation.</p></div><div class="conforme-item"><h4>Coût total du crédit</h4><p>Coût total du crédit indiqué à 91 421,80 €, cohérent avec le montant emprunté et la durée.</p></div></div><div class="item conforme"><h3>Indemnité de remboursement anticipé (IRA)</h3><div class="conforme-item"><h4>Plafond légal respecté</h4><p>IRA plafonnée à 6 mois d'intérêts ou 3 % du capital restant dû, conforme à l'article L312-34 du Code de la consommation.</p></div></div><div class="item conforme"><h3>Assurance emprunteur</h3><div class="conforme-item"><h4>Loi Lemoine</h4><p>Mention de la possibilité de résilier ou substituer l'assurance à tout moment, conforme à la loi Lemoine 2022 et à l'article L313-30 du Code des assurances.</p></div></div>
+  <hr class="divider">
+  <div class="section-banner info">Questions à poser avant de signer</div>
+  <p class="section-subtitle">À clarifier avec la banque pour éviter les mauvaises surprises</p>
+  <div class="question-group"><h4>Garantie et frais annexes</h4><ul><li>La caution SOFINORD est-elle la seule option proposée ? Si oui, pourquoi ?</li><li>Quels sont les coûts réels d'une hypothèque classique avec mainlevée gratuite après délai légal ?</li><li>La restitution de 50 % de la caution en fin de prêt est-elle automatique ou soumise à conditions ?</li></ul></div><div class="question-group"><h4>Assurance emprunteur</h4><ul><li>Le coût de l'assurance CALM Assurances (16 200,00 €) est-il compétitif par rapport au marché ?</li><li>La franchise ITT/IPT de 180 jours est-elle négociable ?</li><li>La délégation d'assurance est-elle possible dès la souscription, ou seulement après acceptation de l'offre ?</li></ul></div><div class="question-group"><h4>Flexibilité du prêt</h4><ul><li>Pourquoi la modulation des mensualités n'est-elle possible qu'après la 24e échéance ?</li><li>Quels sont les frais éventuels pour une modulation anticipée ?</li><li>Existe-t-il d'autres options de flexibilité (report d'échéance, pause de remboursement) ?</li></ul></div><div class="question-group"><h4>Clauses contractuelles</h4><ul><li>Les IRA sont-elles applicables en cas de remboursement anticipé partiel inférieur à 10 % du capital initial ?</li><li>La condition suspensive inclut-elle d'autres clauses que l'obtention du prêt ?</li><li>Y a-t-il des frais cachés non mentionnés dans le coût total du crédit ?</li></ul></div>
+  <hr class="divider">
+  <div class="section-banner info">Estimation indicative des leviers d'économie</div>
+  <p class="section-subtitle">Ordres de grandeur prudents à confirmer avec la banque</p>
+  <table class="savings-table">
+    <thead><tr><th>Poste</th><th>Situation actuelle</th><th>Potentiel d'économie</th><th>Économie estimée (sur 20 ans)</th></tr></thead>
+    <tbody><tr><td>Assurance emprunteur</td><td>16 200,00 € (CALM Assurances, quotité 100 %, franchise 180 jours)</td><td>Délégation d'assurance externe avec quotité 100 % et garanties équivalentes (franchise 90 jours)</td><td>3 000 à 5 000 €</td></tr><tr><td>Garantie</td><td>1 800,00 € (caution SOFINORD, 50 % restituable)</td><td>Hypothèque classique avec mainlevée gratuite après délai légal</td><td>900 à 1 200 €</td></tr></tbody>
+  </table>
+  <div class="total-row">Gain total estimé : <span class="amount">4 000 à 6 200 €</span><span style="font-weight:400;"> — soit ~5 à 7 % du coût total du crédit</span></div>
+  <hr class="divider">
+  <div class="section-banner info">Recommandations finales</div>
+  <ol class="reco-list"><li><strong>Comparer les offres d'assurance emprunteur :</strong> Étudier les devis d'assurance externe avec délégation pour vérifier si le coût et les garanties sont plus avantageux que l'offre groupée CALM Assurances.</li><li><strong>Négocier la garantie :</strong> Demander une comparaison détaillée entre la caution SOFINORD et une hypothèque classique, en incluant les coûts de mainlevée et les frais annexes.</li><li><strong>Demander une modulation anticipée :</strong> Négocier la possibilité de moduler les mensualités dès la 12e échéance et d'augmenter le plafond de ± 20 %.</li><li><strong>Vérifier les franchises d'assurance :</strong> Exiger une franchise ITT/IPT à 90 jours pour aligner l'offre sur les standards du marché.</li><li><strong>Demander une restitution totale de la caution :</strong> Négocier la restitution intégrale de la caution en cas de remboursement anticipé, sans frais supplémentaires.</li></ol>
+  <p class="footer-note">ce rapport est un outil d'information, pas un conseil
+  financier ou juridique. L'analyse repose sur le Code de la consommation (crédit immobilier,
+  droit général). Pour une décision importante, consultez votre banque, un courtier ou un avocat.</p>
+</div>
+</body></html>
